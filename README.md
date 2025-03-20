@@ -84,5 +84,3 @@ https://drive.google.com/drive/folders/1FRGmpuy5jpd3YEhWdzMHhYQ6tcVLqOAW?usp=sha
 
 🔗 Tecnologias Utilizadas: Python, Pandas, Requests, BeautifulSoup
 
-📌 Licença: MIT License
-
