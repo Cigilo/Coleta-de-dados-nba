@@ -74,13 +74,13 @@ Os dados coletados são armazenados em um DataFrame do Pandas e salvos em um arq
 
 O sistema processa todas as partidas automaticamente, limpando a tela e informando a conclusão de cada tabela gerada.
 
-🚀 Como Contribuir
-
-Se você deseja contribuir com o projeto, pode abrir um pull request ou uma issue com sugestões, melhorias ou correções.
 
 📅 Atualizações
 
 Os dados serão coletados e atualizados regularmente para garantir informações sempre atualizadas sobre os jogos da NBA.
+https://drive.google.com/drive/folders/1FRGmpuy5jpd3YEhWdzMHhYQ6tcVLqOAW?usp=sharing
+
+
 
 🔗 Tecnologias Utilizadas: Python, Pandas, Requests, BeautifulSoup
 
