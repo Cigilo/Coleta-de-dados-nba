@@ -1,44 +1,88 @@
-# seguranca-fatores-socioeconomicos
+Coleta de Dados da NBA
 
-Este repositório contém o projeto de análise de dados sobre segurança pública e sua relação com fatores socioeconômicos no Brasil. Utilizamos dados de fontes oficiais para identificar padrões entre criminalidade, desemprego, escolaridade e renda, buscando entender como essas variáveis afetam os índices de violência em diferentes regiões.
+Este repositório contém um projeto de análise de dados da NBA, focado na coleta e processamento de estatísticas dos jogos da temporada regular.
 
-## Alunos :
-- **VINICIUS FERRAZ DO NASCIMENTO**  
-- **JOÃO PEDRO DE OLIVEIRA RIBAS**  
-- **SAMUEL VICTOR FERNANDES DANTAS VICENTE**
+📌 Integrantes do Projeto
 
-## Objetivo do Projeto  
-Este projeto tem como objetivo analisar a relação entre segurança pública e fatores socioeconômicos, como desemprego, escolaridade e renda, e como esses fatores influenciam os índices de criminalidade no Brasil. A análise será realizada utilizando dados de fontes oficiais, comparando diferentes cidades e estados para verificar padrões e tendências.
+VINICIUS FERRAZ DO NASCIMENTO
 
-## Abordagem de Coleta de Dados
+JOÃO PEDRO DE OLIVEIRA RIBAS
 
-### Fontes de Dados
+SAMUEL VICTOR FERNANDES DANTAS VICENTE
 
-#### Segurança Pública:  
-- **SINESP** – Sistema Nacional de Informações de Segurança Pública.  
-- **Anuário Brasileiro de Segurança Pública**.  
-- **Atlas da Violência (IPEA)**.  
+🎯 Objetivo do Projeto
 
-#### Fatores Socioeconômicos:  
-- **IBGE** – Síntese de Indicadores Sociais e PNAD Contínua.  
-- **Ministério da Educação** – Censo Escolar.  
-- **Ministério do Trabalho** – RAIS (Relação Anual de Informações Sociais).  
+O objetivo deste projeto é coletar e analisar eventos importantes que ocorrem em um jogo de basquete da NBA. A partir dos dados, é possível entender melhor o desempenho das equipes ao longo da partida e prever padrões para futuros jogos.
 
-### Periodicidade dos Dados:  
-Anual e trimestral.
+📊 Estrutura dos Dados
 
-### Método de Coleta:  
-- Download de datasets públicos (CSV, JSON).  
-- Uso de APIs para extração automática de dados.  
-- Web scraping em relatórios públicos (se necessário).  
+Os dados coletados incluem diversas informações sobre cada jogo, permitindo uma análise aprofundada das estatísticas de cada equipe.
 
-## Análises e Resultados Esperados  
-- Comparar índices de criminalidade com dados socioeconômicos como escolaridade, desemprego e renda.  
-- Identificar padrões e correlações entre variáveis.  
-- Analisar o impacto das políticas públicas na segurança e fatores socioeconômicos.
+🕒 Período
 
-## Como Contribuir  
-Contribuições são bem-vindas! Se você tem sugestões, melhorias ou correções para o projeto, fique à vontade para abrir um **pull request** ou uma **issue**.  
+Define o momento da partida a que os dados se referem. Pode representar o jogo inteiro ou um quarto específico.
 
-## Atualizações  
-Os dados serão atualizados periodicamente, conforme a disponibilidade das fontes oficiais.
+Exemplos: ALL (Jogo todo), 1Q (Primeiro quarto), 2Q (Segundo quarto), etc.
+
+🏀 Tipos
+
+Categoria que facilita a interpretação das jogadas registradas. As jogadas podem estar relacionadas a pontos, eventos diversos ou liderança no jogo.
+
+Exemplos: Scoring, Others, Lead.
+
+🎯 Lances
+
+Especificação dos eventos do jogo, como assistências, cestas e bloqueios.
+
+Exemplos: Assistences, 2 pointers, 3 pointers, Blocks.
+
+🏠 Time da Casa
+
+Refere-se ao time que joga em casa na partida. Apresenta estatísticas detalhadas do desempenho, incluindo tentativas e acertos de arremessos, além de porcentagens de conversão.
+
+Exemplos: 4/6 (66%), 27/51 (52%).
+
+✈️ Time Visitante
+
+Refere-se ao time que joga fora de casa na partida. Assim como o time da casa, exibe estatísticas detalhadas de arremessos e aproveitamento.
+
+Exemplos: 16/17 (94%), 23/38 (60%).
+
+🔄 Processo de Coleta dos Dados
+
+1️⃣ Coleta de Links
+
+O script lê um arquivo chamado links.txt e coleta uma lista de links, que são URLs de partidas da NBA. Esses links serão usados para acessar as páginas com os dados do jogo.
+
+2️⃣ Extração de Detalhes
+
+A partir de cada URL, o script obtém os nomes dos times envolvidos na partida e a data do jogo.
+
+3️⃣ ID da Partida
+
+O identificador exclusivo de cada partida é extraído diretamente da URL.
+
+4️⃣ Coleta de Estatísticas
+
+Uma requisição é feita para uma API que retorna estatísticas detalhadas da partida, incluindo eventos como assistências, bloqueios e arremessos convertidos.
+
+5️⃣ Organização e Salvamento
+
+Os dados coletados são armazenados em um DataFrame do Pandas e salvos em um arquivo Excel (.xlsx), estruturando as informações por período, tipo de jogada e times.
+
+6️⃣ Execução Final
+
+O sistema processa todas as partidas automaticamente, limpando a tela e informando a conclusão de cada tabela gerada.
+
+🚀 Como Contribuir
+
+Se você deseja contribuir com o projeto, pode abrir um pull request ou uma issue com sugestões, melhorias ou correções.
+
+📅 Atualizações
+
+Os dados serão coletados e atualizados regularmente para garantir informações sempre atualizadas sobre os jogos da NBA.
+
+🔗 Tecnologias Utilizadas: Python, Pandas, Requests, BeautifulSoup
+
+📌 Licença: MIT License
+
