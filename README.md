@@ -1,86 +1,138 @@
-Coleta de Dados da NBA
+# 📊 Coleta de Dados da NBA
 
-Este repositório contém um projeto de análise de dados da NBA, focado na coleta e processamento de estatísticas dos jogos da temporada regular.
+Este repositório contém um projeto de **coleta e análise de dados de partidas da NBA**, focado em estatísticas detalhadas dos jogos da temporada regular e playoffs.
 
-📌 Integrantes do Projeto
+---
 
-VINICIUS FERRAZ DO NASCIMENTO
+## 📌 Integrantes do Projeto
 
-JOÃO PEDRO DE OLIVEIRA RIBAS
+- VINICIUS FERRAZ DO NASCIMENTO  
+- JOÃO PEDRO DE OLIVEIRA RIBAS  
+- SAMUEL VICTOR FERNANDES DANTAS VICENTE  
 
-SAMUEL VICTOR FERNANDES DANTAS VICENTE
+---
 
-🎯 Objetivo do Projeto
+## 🎯 Objetivo do Projeto
 
-O objetivo deste projeto é coletar e analisar eventos importantes que ocorrem em um jogo de basquete da NBA. A partir dos dados, é possível entender melhor o desempenho das equipes ao longo da partida e prever padrões para futuros jogos.
+O objetivo é **coletar eventos importantes** que ocorrem em partidas da NBA, como cestas, assistências, faltas, entre outros, permitindo entender melhor o desempenho das equipes e encontrar padrões para previsões futuras.
 
-📊 Estrutura dos Dados
+---
 
-Os dados coletados incluem diversas informações sobre cada jogo, permitindo uma análise aprofundada das estatísticas de cada equipe.
+## 📊 Estrutura dos Dados
 
-🕒 Período
+As informações extraídas para cada partida incluem:
 
-Define o momento da partida a que os dados se referem. Pode representar o jogo inteiro ou um quarto específico.
+- **Data e Hora**
+- **Mês e Fase** (Temporada Regular ou Playoffs)
+- **Times** (Casa e Visitante)
+- **Resultado** (Vitória Casa/Visitante/Empate)
+- **Período** (Quartos e Overtime)
+- **Categoria** (Scoring, Others, Lead)
+- **Tipo de Lance** (Assistências, 2 Pontos, 3 Pontos, etc.)
+- **Estatísticas Detalhadas** (Tentativas, acertos, porcentagens)
 
-Exemplos: ALL (Jogo todo), 1Q (Primeiro quarto), 2Q (Segundo quarto), etc.
+---
 
-🏀 Tipos
+### 🕒 Período
 
-Categoria que facilita a interpretação das jogadas registradas. As jogadas podem estar relacionadas a pontos, eventos diversos ou liderança no jogo.
+Define o momento da partida a que os dados se referem.
 
-Exemplos: Scoring, Others, Lead.
+Exemplos:  
+`ALL` (jogo completo), `1Q` (primeiro quarto), `OT1` (primeira prorrogação).
 
-🎯 Lances
+---
 
-Especificação dos eventos do jogo, como assistências, cestas e bloqueios.
+### 🏀 Categoria ("Tipos")
 
-Exemplos: Assistences, 2 pointers, 3 pointers, Blocks.
+Classifica as jogadas.
 
-🏠 Time da Casa
+Exemplos:  
+`Scoring`, `Others`, `Lead`.
 
-Refere-se ao time que joga em casa na partida. Apresenta estatísticas detalhadas do desempenho, incluindo tentativas e acertos de arremessos, além de porcentagens de conversão.
+---
 
-Exemplos: 4/6 (66%), 27/51 (52%).
+### 🎯 Lances (Eventos)
 
-✈️ Time Visitante
+Eventos específicos como:
 
-Refere-se ao time que joga fora de casa na partida. Assim como o time da casa, exibe estatísticas detalhadas de arremessos e aproveitamento.
+Exemplos:  
+`Assists`, `2 pointers`, `3 pointers`, `Blocks`, etc.
 
-Exemplos: 16/17 (94%), 23/38 (60%).
+---
 
-🔄 Processo de Coleta dos Dados
+### 🏠 Time da Casa
 
-1️⃣ Coleta de Links
+Estatísticas de arremessos e aproveitamento.
 
-O script lê um arquivo chamado links.txt e coleta uma lista de links, que são URLs de partidas da NBA. Esses links serão usados para acessar as páginas com os dados do jogo.
+Exemplos:  
+`4/6 (66%)`, `27/51 (52%)`.
 
-2️⃣ Extração de Detalhes
+---
 
-A partir de cada URL, o script obtém os nomes dos times envolvidos na partida e a data do jogo.
+### ✈️ Time Visitante
 
-3️⃣ ID da Partida
+Estatísticas semelhantes ao time da casa.
 
-O identificador exclusivo de cada partida é extraído diretamente da URL.
+Exemplos:  
+`16/17 (94%)`, `23/38 (60%)`.
 
-4️⃣ Coleta de Estatísticas
+---
 
-Uma requisição é feita para uma API que retorna estatísticas detalhadas da partida, incluindo eventos como assistências, bloqueios e arremessos convertidos.
+## 🔄 Processo de Coleta dos Dados
 
-5️⃣ Organização e Salvamento
+### 1️⃣ Coleta de Links
 
-Os dados coletados são armazenados em um DataFrame do Pandas e salvos em um arquivo Excel (.xlsx), estruturando as informações por período, tipo de jogada e times.
+O sistema lê o arquivo `links.txt` que contém URLs das partidas na Sofascore.
 
-6️⃣ Execução Final
+### 2️⃣ Extração de Informações Básicas
 
-O sistema processa todas as partidas automaticamente, limpando a tela e informando a conclusão de cada tabela gerada.
+De cada URL, o sistema extrai:
 
+- Nome dos times
+- Data e Hora
+- ID do Jogo
 
-📅 Atualizações
+### 3️⃣ Coleta dos Dados via API + Selenium
 
-Os dados serão coletados e atualizados regularmente para garantir informações sempre atualizadas sobre os jogos da NBA.
-https://drive.google.com/drive/folders/1FRGmpuy5jpd3YEhWdzMHhYQ6tcVLqOAW?usp=sharing
+- Utilizamos a API oficial da Sofascore (`/event/{id}` e `/event/{id}/statistics`).
+- A coleta de estatísticas é feita extraindo o conteúdo `raw_json` usando Selenium para simular uma requisição humana.
 
+### 4️⃣ Cálculo Inteligente do "Score" por Período
 
+- O placar dos **overtimes (OT)** é calculado manualmente somando:
+  - Pontos de Free Throws (cada acerto = 1 ponto)
+  - Pontos de 2 Pointers (cada acerto = 2 pontos)
+  - Pontos de 3 Pointers (cada acerto = 3 pontos)
+- Garante que o Score seja exato mesmo quando não informado diretamente.
 
-🔗 Tecnologias Utilizadas: Python, Pandas, Requests, BeautifulSoup
+### 5️⃣ Organização e Salvamento
+
+- Dados organizados em **DataFrames** (`pandas`) e exportados para arquivos `.xlsx`.
+- Cada linha representa um evento específico (ex: 2PT convertidos no 3º quarto).
+
+### 6️⃣ Execução Final
+
+- O script processa todos os jogos automaticamente.
+- Exibe mensagens de progresso e salva as tabelas prontas.
+
+---
+
+## 📅 Atualizações
+
+Os dados serão coletados e atualizados regularmente para refletir novos jogos e eventos.
+
+Link para acompanhamento de arquivos:  
+📁 [Google Drive do Projeto](https://drive.google.com/drive/folders/1FRGmpuy5jpd3YEhWdzMHhYQ6tcVLqOAW?usp=sharing)
+
+---
+
+## 🔗 Tecnologias Utilizadas
+
+- Python 🐍
+- Pandas
+- Selenium
+- Requests
+- BeautifulSoup
+
+---
 
