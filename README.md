@@ -122,7 +122,7 @@ De cada URL, o sistema extrai:
 Os dados serão coletados e atualizados regularmente para refletir novos jogos e eventos.
 
 Link para acompanhamento de arquivos:  
-📁 [Google Drive do Projeto](https://drive.google.com/drive/folders/1FRGmpuy5jpd3YEhWdzMHhYQ6tcVLqOAW?usp=sharing)
+📁 [Google Drive do Projeto]([https://drive.google.com/drive/folders/1FRGmpuy5jpd3YEhWdzMHhYQ6tcVLqOAW?usp=sharing](https://drive.google.com/drive/folders/18mdXnj1M1j0o1QACMp34M_SenbCSwUt8?usp=sharing))
 
 ---
 
